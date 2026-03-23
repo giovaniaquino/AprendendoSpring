@@ -6,6 +6,12 @@ import jakarta.persistence.*;
 @Table(name = "chamados")
 public class ChamadoEntity {
 
+    private enum StatusChamado {
+        ABERTO,
+        FECHADO,
+        EM_ANDAMENTO
+    }
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -15,8 +21,16 @@ public class ChamadoEntity {
     @Column(nullable = false)
     private String descricao;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private StatusChamado status;
+
+    @PrePersist
+    public void prePersist(){
+        if (this.status == null){
+            this.status = StatusChamado.ABERTO;
+        }
+    }
 
     public Long getId() {
         return id;
@@ -38,11 +52,11 @@ public class ChamadoEntity {
         this.descricao = descricao;
     }
 
-    public String getStatus() {
+    public StatusChamado getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusChamado status) {
         this.status = status;
     }
 }
