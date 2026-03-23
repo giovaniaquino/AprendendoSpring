@@ -19,7 +19,7 @@ public class ChamadoController {
 
     @PostMapping
     public ChamadoEntity abrirChamado(@RequestBody ChamadoEntity chamado){
-        return chamadoService.criarproduto(chamado);
+        return chamadoService.criarchamado(chamado);
     }
 
     @GetMapping
@@ -30,6 +30,16 @@ public class ChamadoController {
     @GetMapping("/{id}")
     public Optional<ChamadoEntity> mostrarChamadoPorId(@PathVariable Long id){
         return chamadoService.chamadoPorId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarChamado(@PathVariable Long id){
+        chamadoService.deletarChamado(id);
+    }
+
+    @PatchMapping("/{id}")
+    public ChamadoEntity atualizaChamado (@PathVariable Long id, @RequestBody ChamadoEntity chamado){
+        return chamadoService.atualizaChamado(id, chamado);
     }
 
 }

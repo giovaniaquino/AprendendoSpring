@@ -15,6 +15,8 @@ Repositório que sera atualizado conforme vou aprendendo a utilizar o Spring
   GET /message/custom/{message}
 ```
 
+### Sistema de Chamados
+
 #### Abrir chamado
 
 ```http
@@ -35,4 +37,14 @@ Repositório que sera atualizado conforme vou aprendendo a utilizar o Spring
 
 ```http
   Get /api/chamado/{id}
+```
+#### Deletar chamado
+
+```http
+  Delete /api/chamado/{id}
+```
+#### Atualizar chamado
+
+```http
+  Patch /api/chamado/{id}
 ```

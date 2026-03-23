@@ -24,7 +24,22 @@ public class ChamadoService {
         return chamadoRepository.findById(id);
     }
 
-    public ChamadoEntity criarproduto(ChamadoEntity chamado){
+    public ChamadoEntity criarchamado(ChamadoEntity chamado){
         return chamadoRepository.save(chamado);
+    }
+
+    public void deletarChamado(Long id){
+        chamadoRepository.deleteById(id);
+    }
+
+    public ChamadoEntity atualizaChamado(Long id, ChamadoEntity chamado){
+
+        ChamadoEntity chamadoExistente = chamadoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Chamado não existe"));
+
+        chamadoExistente.setTitle(chamado.getTitle());
+        chamadoExistente.setDescricao(chamado.getDescricao());
+
+        return chamadoRepository.save(chamadoExistente);
     }
 }
