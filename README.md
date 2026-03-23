@@ -12,13 +12,7 @@ Repositório que sera atualizado conforme vou aprendendo a utilizar o Spring
 #### Mensagem customizada
 
 ```http
-  GET /message/custom/${message}
-```
-
-#### Mensagem customizada
-
-```http
-  GET /message/custom/${message}
+  GET /message/custom/{message}
 ```
 
 #### Abrir chamado
@@ -31,4 +25,14 @@ Repositório que sera atualizado conforme vou aprendendo a utilizar o Spring
   "title" : "titulo",
   "descricao" : "descrição"
 }
+```
+#### Buscar todos chamados
+
+```http
+  Get /api/chamado
+```
+#### Buscar chamados por id
+
+```http
+  Get /api/chamado/{id}
 ```

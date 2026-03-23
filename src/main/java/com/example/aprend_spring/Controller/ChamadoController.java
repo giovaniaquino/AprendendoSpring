@@ -2,10 +2,10 @@ package com.example.aprend_spring.Controller;
 
 import com.example.aprend_spring.Model.ChamadoEntity;
 import com.example.aprend_spring.Service.ChamadoService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/chamado")
@@ -17,8 +17,19 @@ public class ChamadoController {
         this.chamadoService = chamadoService;
     }
 
-    @PostMapping()
+    @PostMapping
     public ChamadoEntity abrirChamado(@RequestBody ChamadoEntity chamado){
         return chamadoService.criarproduto(chamado);
     }
+
+    @GetMapping
+    public List<ChamadoEntity> mostrarChamados(){
+        return chamadoService.listarChamados();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<ChamadoEntity> mostrarChamadoPorId(@PathVariable Long id){
+        return chamadoService.chamadoPorId(id);
+    }
+
 }
